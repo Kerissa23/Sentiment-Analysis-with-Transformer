@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Sentiment Analyzer</h2>
+        <form method="post">
+            <label for="text">Enter a sentence to analyze:</label>
+            <textarea id="text" name="text" placeholder="Type something..." rows="4" required></textarea>
+            <input type="submit" value="Analyze">
+        </form>
+        {% if sentiment %}
+            <div class="result">
+                <h3>Sentiment: {{ sentiment }}</h3>
+                <p>Confidence: {{ score }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
