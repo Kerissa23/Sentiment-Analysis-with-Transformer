@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sentiment Analyzer</title>
+    <title>Tweet Sentiment Analysis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Sentiment Analyzer</h2>
-        <form method="post">
-            <label for="text">Enter a sentence to analyze:</label>
-            <textarea id="text" name="text" placeholder="Type something..." rows="4" required></textarea>
+        <h2>💬 Tweet Sentiment Analyzer (VADER)</h2>
+
+        <form method="post" class="form-box">
+            <label for="text">Enter a tweet or sentence:</label>
+            <textarea id="text" name="text" rows="4" placeholder="Type a tweet here..." required></textarea><br>
             <input type="submit" value="Analyze">
         </form>
-        {% if sentiment %}
-            <div class="result">
-                <h3>Sentiment: {{ sentiment }}</h3>
-                <p>Confidence: {{ score }}</p>
-            </div>
+
+        {% if result %}
+        <div class="result-box">
+            <h3>Result:</h3>
+            <p><strong>📝 Text:</strong> {{ result.text }}</p>
+            <p><strong>📊 Sentiment:</strong> {{ result.sentiment }}</p>
+            <p><strong>📈 Score:</strong> {{ result.score }}</p>
+        </div>
         {% endif %}
     </div>
 </body>
 </html>
+
